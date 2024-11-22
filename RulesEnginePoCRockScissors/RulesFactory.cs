@@ -19,11 +19,6 @@ namespace RulesEnginePoCRockScissors.RulesFactory
             // check for classes which lack a parameterless constructor and either
             // exclude or throw exception as appropriate.
             //
-            //  
-            //
-            //  Also consider table driving this instead of reflection to avoid performance overhead
-            // if the number of rules is expected to be large
-
             foreach (var type in ruleTypes)
             {
                 if (Activator.CreateInstance(type) is RSPRule rule && rule.Applicable(gameMode))
