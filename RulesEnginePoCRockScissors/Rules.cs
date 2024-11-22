@@ -9,10 +9,12 @@ namespace RulesEnginePoCRockScissors.Rules
         public abstract string Loser { get; }
         public abstract string Action { get; }
         public abstract GameMode ApplicableModes { get; }
-
+        //Is this rule even applicable given the game mode we are in.
+        //I.e. in classic mode we dont care about Lizard or Spock rules.
         public bool Applicable(GameMode currentGameMode) => (ApplicableModes & currentGameMode) != 0;
-
-        public bool Applies(string player1Choice, string player2Choice) =>
+        //Once we know all the rules the govern the game and players have made their choices
+        //This method determines the winner.
+        public virtual bool Applies(string player1Choice, string player2Choice) =>
             Winner.Trim().ToLower() == player1Choice.Trim().ToLower() && Loser.Trim().ToLower() == player2Choice.Trim().ToLower();
         
     }
